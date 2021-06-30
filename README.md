@@ -2,6 +2,9 @@
 
 My principles of coding style in my projects for me and my friends.
 
+1. [General](#general)
+2. [Naming](#naming)
+
 ## General
 - Global constants are not allowed, they must always be inside the namespace.
 - Compiler warnings are considered bugs and are not allowed. Exception: TODO :, FIXME:
