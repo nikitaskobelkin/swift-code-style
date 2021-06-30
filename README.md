@@ -37,7 +37,7 @@ class Weather {
   var cloudy: String
 }
 ```
-**Do Not**
+~~**Do Not**~~
 ```swift
 class weather {
   var City_NAME: String
