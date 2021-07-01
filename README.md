@@ -4,6 +4,7 @@ My principles of coding style in my projects for me and my friends.
 
 1. [General](#general)
 2. [Naming](#naming)
+3. [Structure](#structure)
 
 ## General
 - Global constants are not allowed, they must always be inside the namespace.
@@ -42,5 +43,40 @@ class Weather {
 class weather {
   var City_NAME: String
   var cldly: String
+}
+```
+
+## Structure
+- Tab is used for identification (not spaces).
+- Functions, loops and other expressions (if, else, switch, while, etc.) must have an opening curly brace on the same line as the expression. The closing one is always on a new line.
+- There must be exactly one space between the construct and the opening curly brace.
+- Function call parentheses are separated from it with a single space.
+- There should be exactly one blank line between functions, for readability and code organization.
+
+**Do**
+```swift
+func checSpaces {
+  if spaces.count > 8 {
+    print("Good")
+  } else {
+    print("Good too")
+  }
+}
+
+func welcome () {
+  print("Welcome!")
+}
+```
+**Do Not**
+```swift
+func checSpaces(_ spaces: [String]) {
+  if spaces.count > 8{
+    print("Good")
+  }
+  else {
+    print("Good too")}
+}
+func welcome (){
+  print("Welcome!")
 }
 ```
