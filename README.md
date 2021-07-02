@@ -180,30 +180,29 @@ class Example: ExampleProtocol {
 ## Protocols
 - When a class conforms to several protocols, they need to be split into different extensions. This approach will help group related methods together with the protocol they will conform. The protocol must also be marked with // MARK: -.
 - In the name of the protocols, the word "Protocol" is allowed only at the end.
-- 
 
 🥰
 ```swift
 class ExampleConstroller: UIViewController {
-  // something
+    // something
 }
 
 
 // MARK: - UITableViewDataSource
 extension ExampleConstroller: UITableViewDataSource {
- // something
+    // something
 }
 
 
 // MARK: - UIScrollViewDelegate
 extension ExampleConstroller: UIScrollViewDelegate {
-  // something
+    // something
 }
 ```
 🤮
 ```swift
 class ExampleConstroller: UIViewController, UITableViewDataSource, UIScrollViewDelegate {
-  // something
+    // something
 }
 ```
 
@@ -259,7 +258,7 @@ exampleVariable = exampleOptional!
 var exampleOptional: String?
 
 if exampleOptional != nil {
-  exampleVariable = exampleOptional!
+    exampleVariable = exampleOptional!
 }
 ```
 ```swift
