@@ -400,4 +400,4 @@ func exampleParse (from dictionary: [Int: Any]) {
 }
 ```
 
-[Go To Top](#skobelkin's-code-style)
+[Go To Top](#skobelkins-code-style)
