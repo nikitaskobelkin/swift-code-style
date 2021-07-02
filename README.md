@@ -1,7 +1,7 @@
 # Skobelkin's code style
 [![Version](https://img.shields.io/badge/VERSION-BETA-1abc9c.svg)](https://github.com/nikitaskobelkin/swift-code-style)
 
-My principles of coding style in my projects for me and my friends.
+🐶 My principles of coding style in my projects for me and my friends.
 
 1. [General](#general)
 2. [Naming](#naming)
