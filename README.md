@@ -1,11 +1,20 @@
 # Skobelkin's code style
+[![Version](https://img.shields.io/badge/VERSION-BETA-1abc9c.svg)](https://github.com/nikitaskobelkin/swift-code-style)
 
 My principles of coding style in my projects for me and my friends.
 
 1. [General](#general)
 2. [Naming](#naming)
 3. [Structure](#structure)
-4. [Class (Struct) structure](#class-structure)
+4. [Class (Struct) Structure](#class-structure)
+5. [Protocols](#protocols)
+6. [Types](#types)
+7. [Forced Unwrapping](#forced-unwrapping)
+8. [Forced Casting](#forced-casting)
+9. [Enum Cases](#enum-cases)
+10. [Spacing](#spacing)
+11. [Magic Numbers](#magic-numbers)
+12. [Comments (MARK)](#comments)
 
 ## General
 - Global constants are not allowed, they must always be inside the namespace.
@@ -26,10 +35,10 @@ My principles of coding style in my projects for me and my friends.
 - Abbreviations (e.g. res) should be avoided unless they are generally accepted (e.g. url).
 - CamelCase is used, not snake_case.
 
-### For variables and functions
+### For Variables And Functions
 > Beginning with lowercase.
 
-### For classes, structures, enums, etc.
+### For Classes, Protocols, Structures, Enums, etc.
 > Beginning with uppercase.
 
 🥰
@@ -83,7 +92,7 @@ func welcome (){
 }
 ```
 
-## Class structure
+## Class Structure
 - The order of content in classes, structures and the like:
   1. Private static properties
   2. Public static properties
@@ -167,3 +176,229 @@ class Example: ExampleProtocol {
     
 }
 ```
+
+## Protocols
+- When a class conforms to several protocols, they need to be split into different extensions. This approach will help group related methods together with the protocol they will conform. The protocol must also be marked with // MARK: -.
+- In the name of the protocols, the word "Protocol" is allowed only at the end.
+- 
+
+🥰
+```swift
+class ExampleConstroller: UIViewController {
+  // something
+}
+
+
+// MARK: - UITableViewDataSource
+extension ExampleConstroller: UITableViewDataSource {
+ // something
+}
+
+
+// MARK: - UIScrollViewDelegate
+extension ExampleConstroller: UIScrollViewDelegate {
+  // something
+}
+```
+🤮
+```swift
+class ExampleConstroller: UIViewController, UITableViewDataSource, UIScrollViewDelegate {
+  // something
+}
+```
+
+## Types
+- If possible, you should use native Swift types (Double, String, Date), and not the old types from Objective-C (NSNumber, NSString, NSDate).
+- Swift has transformations that turn Swift types into legacy Objective-C types. Therefore, when you need some old type, you can always get it from the Swift.
+
+🥰
+```swift
+let number = 88.0                                     // Double
+let stringNumber = (number as NSNumber).stringValue   // String
+```
+🤮
+```swift
+let number: NSNumber = 88.0                          // NSNumber
+let stringNumber: NSString = number.stringValue       // NSString
+```
+
+## Forced Unwrapping
+- Forced unwrapping of optionals is not permitted. Instead, proper error handling should be employed through the use of a safe unwrapping mechanism like guard, if let, optional chaining, or nil-coalescing.
+
+🥰
+```swift
+var exampleOptional: String?
+
+guard let text = exampleOptional else { return }
+exampleVariable = text
+```
+```swift
+var exampleOptional: String?
+
+if let text = exampleOptional {
+    exampleVariable = text
+}
+```
+```swift
+var exampleOptional: String?
+
+exampleVariable = exampleOptional ?? "default value"
+```
+```swift
+exampleClosure { [weak self] response in
+guard let self = self { return }
+// something
+```
+🤮
+```swift
+var exampleOptional: String?
+
+exampleVariable = exampleOptional!
+```
+```swift
+var exampleOptional: String?
+
+if exampleOptional != nil {
+  exampleVariable = exampleOptional!
+}
+```
+```swift
+exampleClosure { [weak self] response in
+self?.exampleMethod()
+```
+
+## Forced Casting
+- For the same reasons outlined above regarding forced unwrapping, forced casting is not permitted.
+
+🥰
+```swift
+func exampleParse (from dictionary: [Int: Any]) {
+    guard let euro = dictionary["euro"] as? Int,
+          let usd = dictionary["usd"] as? Int else { return }
+    // something
+}
+```
+🤮
+```swift
+func exampleParse (from dictionary: [Int: Any]) {
+    let euro = dictionary["euro"] as! Int
+    let usd = dictionary["usd"] as! Int
+    // something
+}
+```
+
+## Enum Cases
+- Enum cases should be declared on separate lines instead of declaring multiple cases on a single line.
+
+🥰
+```swift
+enum ExampleEnum {
+    case caseOne
+    case caseTwo
+    case caseThree
+}
+```
+🤮
+```swift
+enum ExampleEnum {
+    case caseOne, caseTwo, caseThree
+}
+```
+
+## Spacing
+- It's very simple: either one line (but not more) or not.
+- And what in which case, see below.
+
+### Inter-function
+> One line
+
+🥰
+```swift
+func up () {  
+    // something
+}
+
+func down () {
+    // something
+}
+```
+🤮
+```swift
+func up () {  
+    // something
+}
+func down () {
+    // something
+}
+```
+
+### For Extension, Protocols, Classes, etc.
+> There must be no space after the opening declaration of the extension and at the end.
+
+🥰
+```swift
+extension Example {
+    func up () {
+        // something
+    }
+
+    func down () {
+        // something
+    }
+}
+```
+🤮
+```swift
+extension Example {
+
+    func up () {
+        // something
+    }
+
+    func down () {
+        // something
+    }
+    
+}
+```
+
+## Magic Numbers
+- Don't store constants in an incomprehensible number format.
+- Use component display.
+
+🥰
+```swift
+let seconds = 60 * 60 * 60
+```
+🤮
+```swift
+let seconds = 3600
+```
+
+## Comments
+- Add a dash after the MARK: so that Xcode's method browser will include nice visual separators.
+- Only titles are allowed, not description or solid text.
+- It is advisable to put an empty line after.
+- After a double slash, 1 space is required.
+
+🥰
+```swift
+// MARK: - Example Parse
+
+func exampleParse (from dictionary: [Int: Any]) {
+    guard let euro = dictionary["euro"] as? Int,
+          let usd = dictionary["usd"] as? Int else { return }
+    // something
+}
+```
+🤮
+```swift
+//MARK: Stupid, unnecessary description, don't understand why.
+func exampleParse (from dictionary: [Int: Any]) {
+    guard let euro = dictionary["euro"] as? Int,
+          let usd = dictionary["usd"] as? Int else { return }
+    // something
+}
+```
+
+[Go To Top](#skobelkin's-code-style)
