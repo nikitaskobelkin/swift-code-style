@@ -25,7 +25,7 @@
 ```
 // A comment that someone left (for example, I), here we will put an end.
 ```
-🤮
+💩
 ```
 // a comment that someone left ( for example, I) , here we will put an end .
 ```
@@ -48,7 +48,7 @@ class Weather {
   var cloudy: String
 }
 ```
-🤮
+💩
 ```swift
 class weather {
   var City_NAME: String
@@ -78,7 +78,7 @@ func welcome () {
   print("Welcome!")
 }
 ```
-🤮
+💩
 ```swift
 func checSpaces(_ spaces: [String]) {
   if spaces.count > 8{
@@ -107,7 +107,7 @@ func welcome (){
 - Protocols should be added to a separate file with the protocol name in the same folder as the class.
 - No vertical indents at the beginning and at the end (look at the Example class in the example).
 
-🥰
+💩
 ```swift
 class Example: ExampleProtocol {
     private static let privateStaticProperty = // something
@@ -142,7 +142,7 @@ extension Example: ExampleProtocol {
     // something
 }
 ```
-🤮
+💩
 ```swift
 class Example: ExampleProtocol {
 
@@ -181,7 +181,7 @@ class Example: ExampleProtocol {
 - When a class conforms to several protocols, they need to be split into different extensions. This approach will help group related methods together with the protocol they will conform. The protocol must also be marked with // MARK: -.
 - In the name of the protocols, the word "Protocol" is allowed only at the end.
 
-🥰
+💩
 ```swift
 class ExampleConstroller: UIViewController {
     // something
@@ -199,7 +199,7 @@ extension ExampleConstroller: UIScrollViewDelegate {
     // something
 }
 ```
-🤮
+💩
 ```swift
 class ExampleConstroller: UIViewController, UITableViewDataSource, UIScrollViewDelegate {
     // something
@@ -210,12 +210,12 @@ class ExampleConstroller: UIViewController, UITableViewDataSource, UIScrollViewD
 - If possible, you should use native Swift types (Double, String, Date), and not the old types from Objective-C (NSNumber, NSString, NSDate).
 - Swift has transformations that turn Swift types into legacy Objective-C types. Therefore, when you need some old type, you can always get it from the Swift.
 
-🥰
+
 ```swift
 let number = 88.0                                     // Double
 let stringNumber = (number as NSNumber).stringValue   // String
 ```
-🤮
+💩
 ```swift
 let number: NSNumber = 88.0                          // NSNumber
 let stringNumber: NSString = number.stringValue       // NSString
@@ -248,7 +248,7 @@ exampleClosure { [weak self] response in
 guard let self = self { return }
 // something
 ```
-🤮
+💩
 ```swift
 var exampleOptional: String?
 
@@ -277,7 +277,7 @@ func exampleParse (from dictionary: [Int: Any]) {
     // something
 }
 ```
-🤮
+💩
 ```swift
 func exampleParse (from dictionary: [Int: Any]) {
     let euro = dictionary["euro"] as! Int
@@ -297,7 +297,7 @@ enum ExampleEnum {
     case caseThree
 }
 ```
-🤮
+💩
 ```swift
 enum ExampleEnum {
     case caseOne, caseTwo, caseThree
@@ -321,7 +321,7 @@ func down () {
     // something
 }
 ```
-🤮
+💩
 ```swift
 func up () {  
     // something
@@ -346,7 +346,7 @@ extension Example {
     }
 }
 ```
-🤮
+💩
 ```swift
 extension Example {
 
@@ -369,7 +369,7 @@ extension Example {
 ```swift
 let seconds = 60 * 60 * 60
 ```
-🤮
+💩
 ```swift
 let seconds = 3600
 ```
@@ -390,7 +390,7 @@ func exampleParse (from dictionary: [Int: Any]) {
     // something
 }
 ```
-🤮
+💩
 ```swift
 //MARK: Stupid, unnecessary description, don't understand why.
 func exampleParse (from dictionary: [Int: Any]) {
