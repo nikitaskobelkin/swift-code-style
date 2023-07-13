@@ -1,4 +1,4 @@
-# Skobelkin's code style
+# Nice code style
 [![Version](https://img.shields.io/badge/VERSION-BETA-1abc9c.svg)](https://github.com/nikitaskobelkin/swift-code-style)
 
 🐶 My principles of coding style in my projects for me and my friends.
