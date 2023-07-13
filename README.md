@@ -107,7 +107,7 @@ func welcome (){
 - Protocols should be added to a separate file with the protocol name in the same folder as the class.
 - No vertical indents at the beginning and at the end (look at the Example class in the example).
 
-💩
+🥰
 ```swift
 class Example: ExampleProtocol {
     private static let privateStaticProperty = // something
